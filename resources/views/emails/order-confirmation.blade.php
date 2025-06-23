@@ -22,7 +22,7 @@
         </div>
         
         <div class="content">
-            <p>Bonjour {{ $user->name }},</p>
+            <p>Bonjour {{ $user ? $user->name : ($order->first_name . ' ' . $order->last_name) }},</p>
             
             <p>Nous avons bien reçu votre commande et la préparons pour l'expédition. Voici les détails de votre commande :</p>
             
@@ -46,10 +46,10 @@
             
             <h3>Adresse de livraison :</h3>
             <div class="order-details">
-                {{ $order->shipping_address['name'] ?? '' }}<br>
-                {{ $order->shipping_address['address'] ?? '' }}<br>
-                {{ $order->shipping_address['city'] ?? '' }}, {{ $order->shipping_address['postalCode'] ?? '' }}<br>
-                {{ $order->shipping_address['country'] ?? '' }}
+                {{ $order->first_name }} {{ $order->last_name }}<br>
+                {{ $order->street }}<br>
+                {{ $order->city }}, {{ $order->zip_code }}<br>
+                {{ $order->country }}
             </div>
             
             <p>Nous vous enverrons un autre email lorsque votre commande sera expédiée.</p>
