@@ -337,7 +337,7 @@ class PaymentController extends Controller
                     DB::beginTransaction();
 
                     // Update order fields - use 'completed' instead of 'paid' for status
-                    $order->status = 'completed';  // Changed from 'paid' to 'completed'
+                    $order->status = 'confirmed';  // Changed from 'paid' to 'completed'
                     $order->payment_status = 'paid';
                     $order->payment_intent_id = $paymentIntentId;
             
@@ -654,7 +654,7 @@ class PaymentController extends Controller
                 try {
                     DB::beginTransaction();
 
-                    $order->status = 'completed';
+                    $order->status = 'confirmed';
                     $order->payment_status = 'paid';
                     $order->payment_intent_id = $paypalOrderId;
 
